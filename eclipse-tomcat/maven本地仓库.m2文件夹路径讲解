@@ -1,0 +1,45 @@
+maven本地仓库.m2文件夹路径讲解
+￼ afreon
+		发布时间: 2015/09/05 22:18 阅读: 5886 收藏: 8 点赞: 0 评论: 0
+摘要 正文
+        Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。当你使用Maven的时候，你用一个明确定义的项目对象模型来描述你的项目，然后Maven可以应用横切的逻辑，这些逻辑来自一组共享的（或者自定义的）插件。
+
+基本的常用命令如下：
+mvn archetype：create 创建Maven项目
+mvn compile 编译源代码
+mvn deploy 发布项目
+mvn test-compile 编译测试源代码
+mvn test 运行应用程序中的单元测试
+mvn site 生成项目相关信息的网站
+mvn clean 清除项目目录中的生成结果
+mvn package 根据项目生成的jar
+mvn install 在本地Repository中安装jar
+mvn eclipse:eclipse 生成eclipse项目文件
+mvnjetty:run 启动jetty服务
+mvntomcat:run 启动tomcat服务
+mvn clean package -Dmaven.test.skip=true:清除以前的包后重新打包，跳过测试类
+
+对于初学者在安装配置好maven之后，发现目录下不存在.m2文件夹，其原因是因为没有执行任何maven相关的命令，之后执行之后maven才会自动去创建.m2文件夹。
+
+具体步骤如下：
+1）打开doc在cmd命令下执行mvn help:system命令，此命令含义可以参考地址如下：http://www.yoodb.com/article/display/167，执行完成之后就会发现目录下自动创建了.m2文件夹，本机具体路径如图：
+
+￼
+
+2）默认情况下.m2文件夹下防止了maven本地仓库/repository，maven的组件都被存储在该仓库中，部分开发包(jar)如下：
+.cache
+activation
+ant
+antlr
+aopalliance
+asm
+asmack-android
+avalon-franmework
+bouncycastle
+c3po
+cglib
+classworlds
+com
+
+3）在使用Eclipse执行maven命令时可能报Fatal error compiling: tools.jar not found错误，具体解决方案个人推荐参考地址：http://www.yoodb.com/article/display/205
+版权

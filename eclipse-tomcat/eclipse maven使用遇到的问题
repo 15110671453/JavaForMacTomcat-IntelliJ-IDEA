@@ -1,0 +1,35 @@
+eclipse maven使用遇到的问题
+第一： 'lifecycleMappingMetadata 找不到
+
+
+￼
+
+
+
+第二，添加项目模版  项目模型 选择 原型archetype  catalog目录
+
+Catalog File:http://repo1.maven.org/maven2/archetype-catalog.xml
+
+
+刚开始不用这个项目原型构建模版 初学者 还是自定义开始吧
+create a simple project skip archetype selection
+
+This is the prefer way, because you no need to remember the long Spring ide update URL. In Eclipse IDE, click “Help” -> “Eclipse Marketplace“, type “Spring IDE“, follow the wizard to finish the installation.
+
+第三 eclipse 安装http://springide.org/updatesite spring
+
+
+第四 eclipse  安装maven 打开Eclipse，如果你的Eclipse版本里有Eclipse Market，你可以直接在market中搜索maven进行安装；否则在Help -> Install New Software的work with中输入http://download.eclipse.org/technology/m2e/releases ，然后你就会看到可安装的就是Maven，有两个选项都选上，然后开始安装。如果在安装过程中你遇到了无法找到org.slf4j.api 1.6.2.jar这个文件，其实你的这个org.slf4j.api 包版本比较低，不符合安装Maven 2的条件。我们可以在这个网站http://search.maven.org/#browse 下载到1.6.1以上的包，我下了的是1.6.4的包，然后把它的名字改为1.6.2，放在Eclipse安装目录下的plugins文件夹里，然后重复上面步骤，继续安装Maven。
+6.安装成功你会在Eclipse的Windows—>Preferences中看到多了一栏Maven，点击展开它，在Installations 中add一个目录，就是解压包的Maven目录绝对路径。添加完毕，然后点apply。再看User Setting，提示为不可用。点击Browse浏览，选中解压包Maven目录\conf\setting.xml文件，然后点击apply。这样就完成了。
+第一次导入或者创建Maven项目所支持的Android可能还需要进行一些插件安装，这些就不需要手动安装了，Eclipse会自动识别，你只要点击确定安装或者继续之类的，Eclipse就会自动安装
+
+
+
+
+
+
+
+
+
+
+

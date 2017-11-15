@@ -1,0 +1,38 @@
+1.3修改tomcat端口号为8088 修改tomcat的默认网站目录
+
+想把Tomcat的默认网站根目录修改成自己指定的目录，比如：F:/MyWeb。这样以后把自己写的index.jsp放到该目录下，就能通过http://localhost:8080/index.jsp来访问我的F:/MyWeb/index.jsp文件。其实就是修改conf目录中的server.xml。
+ 
+有2种修改方式：
+	•	方式一
+	1	把<Host name="localhost" debug="0" appBase="webapps" unpackWARs="true" autoDeploy="true" xmlValidation="false" xmlNamespaceAware="false">中的appBase的值改成F:/MyWeb，变成appBase="F:/MyWeb"。
+	2	必须要在F:/MyWeb目录下建立ROOT（大写字母）目录。
+	3	重启Tomcat。
+     这种修改方式的结果是：localhost确实是F:/MyWeb，但网站的根目录是F:/MyWeb/ROOT，而不是F:/MyWeb。以后自己写的网站都要放到ROOT下才行。而且，Tomcat自带的Tomcat Manager无法再从开始菜单的快捷方式运行，因为其路径是localhost:8080，而现在的localhost变成了F:/MyWeb，里面没有相关文件，所以无法运行了。只能把Manager的相关文件复制到F:/MyWeb中才行。
+     考虑到上面缺点，不推荐这种方式。推荐下面的方式二！
+ 
+	•	方式二
+	1	找到</Host>标签，在之前加入这样一行：<Context path="" docBase="F:/MyWeb" debug="0" reloadable="true" crossContext="true" />。
+	2	重启Tomcat，OK。
+     对上面语句做下解释：该句是设置Tomcat的虚拟路径，书写语法是<Context path="虚拟目录" docBase="实际目录" debug="0" reloadable="true" crossContext="true" />，我将网站实际根目录映射到了F:/MyWeb，于是更改了网站跟目录的映射。
+     这种修改方式的结果是：localhost依然是最初的webapps，但网站的根目录是F:/MyWeb，相当于把原始的ROOT目录映射成F:/MyWeb，以后写的网站直接放到F:/MyWeb下，运行http://localhost:8080/index.jsp，就能访问了。而且，由于localhost的路径没变，所以Tomcat Manager可以继续使用。
+ 
+ 
+可以把原先ROOT中的文件都复制到MyWeb下做下测试，运行http://localhost:8080，OK，正常访问。
+ 
+ 
+PS：我在方式二中，在加上所要求的语句后，又在前面加了句注释，结果重启Tomcat时就启动不了了，把注释删了，就能启动了，不知道为什么？
+
+
+
+
+
+Catalina start启动tomcat
+Catalina stop 终止tomcat
+
+问题一：
+这个问题只是一时出现 ，过了一会后就无法访问tomcat了
+因为mac机子本身安装了nginx服务器 也占用8080端口；启动tomcat后竟然也是8080端口 ；两个服务都开着 竟然 没有出错 ；浏览器都访问正常 为什么 没有端口占用的问题
+
+问题二：
+修改tomcat 配置文件 访问端口改变
+http://localhost:8089 本机的tomcat端口号改为8089

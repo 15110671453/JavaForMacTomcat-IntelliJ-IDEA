@@ -1,0 +1,85 @@
+mac检查本地端口号 解决ssh连接失败 解决vnc连接失败
+
+第一个问题：
+----------------------------------------------------------
+12345678901234567:~ admindyn$ telnet 127.0.0.1 22
+Trying 127.0.0.1...
+telnet: connect to address 127.0.0.1: Connection refused
+telnet: Unable to connect to remote host
+12345678901234567:~ admindyn$ 
+
+发现本地访问22 端口 连接失败
+
+ssh肯定无法连接
+
+第二个问题：
+----------------------------------------------------------
+
+使用microsoft remote desktop 连接windows的远程桌面
+
+拖拽本机文件到服务器 换到盒子发现登陆远程后 无法访问本机本地的文件
+无法实现拖拽
+
+注意在使用microsoft remote desktop时 
+除了在new或者edit 下
+配置 服务器ip地址
+服务器登陆用户名 密码外 
+还需要 在 edit时 在redirection 下 配置 允许远程访问的本地文件目录
+
+----------------------------------------------------------
+
+
+mac开启22端口
+
+选择System prefrence -> sharing , 将remote login打开
+
+测试是否打开
+import socket
+s = socket.socket()
+s.connect(('127.0.0.1',22))
+s.send('scan')
+banner = s.recv(1024)
+print banner
+
+端口扫描
+import socket
+for port in range(20,25):
+    try:
+        s = socket.socket()
+        print "[+] Attempting to connect to 127.0.0.1: " + str(port)
+        s.connect(('127.0.0.1', port))
+        s.send('scan')
+        banner = s.recv(1024)
+        if banner:
+            print "[+] Port " + str(port) + " open: \n" + banner
+        s.close()
+    except: pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

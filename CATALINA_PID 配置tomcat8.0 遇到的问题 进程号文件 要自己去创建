@@ -1,0 +1,180 @@
+CATALINA_PID 配置tomcat8.0 遇到的问题 进程号文件 要自己去创建
+
+
+thief-MacBook-Pro:bin thief$ catalina.sh 
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Usage: catalina.sh ( commands ... )
+commands:
+  debug             Start Catalina in a debugger
+  debug -security   Debug Catalina with a security manager
+  jpda start        Start Catalina under JPDA debugger
+  run               Start Catalina in the current window
+  run -security     Start in the current window with security manager
+  start             Start Catalina in a separate window
+  start -security   Start in a separate window with security manager
+  stop              Stop Catalina, waiting up to 5 seconds for the process to end
+  stop n            Stop Catalina, waiting up to n seconds for the process to end
+  stop -force       Stop Catalina, wait up to 5 seconds and then use kill -KILL if still running
+  stop n -force     Stop Catalina, wait up to n seconds and then use kill -KILL if still running
+  configtest        Run a basic syntax check on server.xml - check exit code for result
+  version           What version of tomcat are you running?
+Note: Waiting for the process to end and use of the -force option require that $CATALINA_PID is defined
+thief-MacBook-Pro:bin thief$ catalina.sh start
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Tomcat started.
+thief-MacBook-Pro:bin thief$ catalina.sh configtest.
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Usage: catalina.sh ( commands ... )
+commands:
+  debug             Start Catalina in a debugger
+  debug -security   Debug Catalina with a security manager
+  jpda start        Start Catalina under JPDA debugger
+  run               Start Catalina in the current window
+  run -security     Start in the current window with security manager
+  start             Start Catalina in a separate window
+  start -security   Start in a separate window with security manager
+  stop              Stop Catalina, waiting up to 5 seconds for the process to end
+  stop n            Stop Catalina, waiting up to n seconds for the process to end
+  stop -force       Stop Catalina, wait up to 5 seconds and then use kill -KILL if still running
+  stop n -force     Stop Catalina, wait up to n seconds and then use kill -KILL if still running
+  configtest        Run a basic syntax check on server.xml - check exit code for result
+  version           What version of tomcat are you running?
+Note: Waiting for the process to end and use of the -force option require that $CATALINA_PID is defined
+thief-MacBook-Pro:bin thief$ catalina.sh stop -force
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Exception in thread "main" java.lang.UnsupportedClassVersionError: org/apache/catalina/startup/Bootstrap : Unsupported major.minor version 51.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(ClassLoader.java:637)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:621)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:141)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:283)
+	at java.net.URLClassLoader.access$000(URLClassLoader.java:58)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:197)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Kill failed: $CATALINA_PID not set
+thief-MacBook-Pro:bin thief$ sudo vi catalina.sh 
+Password:
+thief-MacBook-Pro:bin thief$ catalina.sh
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Using CATALINA_PID:    /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID
+Usage: catalina.sh ( commands ... )
+commands:
+  debug             Start Catalina in a debugger
+  debug -security   Debug Catalina with a security manager
+  jpda start        Start Catalina under JPDA debugger
+  run               Start Catalina in the current window
+  run -security     Start in the current window with security manager
+  start             Start Catalina in a separate window
+  start -security   Start in a separate window with security manager
+  stop              Stop Catalina, waiting up to 5 seconds for the process to end
+  stop n            Stop Catalina, waiting up to n seconds for the process to end
+  stop -force       Stop Catalina, wait up to 5 seconds and then use kill -KILL if still running
+  stop n -force     Stop Catalina, wait up to n seconds and then use kill -KILL if still running
+  configtest        Run a basic syntax check on server.xml - check exit code for result
+  version           What version of tomcat are you running?
+Note: Waiting for the process to end and use of the -force option require that $CATALINA_PID is defined
+thief-MacBook-Pro:bin thief$ catalina.sh 
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Using CATALINA_PID:    /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID
+Usage: catalina.sh ( commands ... )
+commands:
+  debug             Start Catalina in a debugger
+  debug -security   Debug Catalina with a security manager
+  jpda start        Start Catalina under JPDA debugger
+  run               Start Catalina in the current window
+  run -security     Start in the current window with security manager
+  start             Start Catalina in a separate window
+  start -security   Start in a separate window with security manager
+  stop              Stop Catalina, waiting up to 5 seconds for the process to end
+  stop n            Stop Catalina, waiting up to n seconds for the process to end
+  stop -force       Stop Catalina, wait up to 5 seconds and then use kill -KILL if still running
+  stop n -force     Stop Catalina, wait up to n seconds and then use kill -KILL if still running
+  configtest        Run a basic syntax check on server.xml - check exit code for result
+  version           What version of tomcat are you running?
+Note: Waiting for the process to end and use of the -force option require that $CATALINA_PID is defined
+thief-MacBook-Pro:bin thief$ sudo vi catalina.sh 
+thief-MacBook-Pro:bin thief$ cd /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID 
+thief-MacBook-Pro:CATALINA_PID thief$ vi CATALINA_PID
+thief-MacBook-Pro:CATALINA_PID thief$ ls -la
+total 0
+drwxr-xr-x   2 thief  wheel   68  7  9 12:35 .
+drwxr-xr-x  15 thief  wheel  510  7  9 12:33 ..
+thief-MacBook-Pro:CATALINA_PID thief$ vi CATALINA_PID
+thief-MacBook-Pro:CATALINA_PID thief$ catalina.sh 
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Using CATALINA_PID:    /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID
+Usage: catalina.sh ( commands ... )
+commands:
+  debug             Start Catalina in a debugger
+  debug -security   Debug Catalina with a security manager
+  jpda start        Start Catalina under JPDA debugger
+  run               Start Catalina in the current window
+  run -security     Start in the current window with security manager
+  start             Start Catalina in a separate window
+  start -security   Start in a separate window with security manager
+  stop              Stop Catalina, waiting up to 5 seconds for the process to end
+  stop n            Stop Catalina, waiting up to n seconds for the process to end
+  stop -force       Stop Catalina, wait up to 5 seconds and then use kill -KILL if still running
+  stop n -force     Stop Catalina, wait up to n seconds and then use kill -KILL if still running
+  configtest        Run a basic syntax check on server.xml - check exit code for result
+  version           What version of tomcat are you running?
+Note: Waiting for the process to end and use of the -force option require that $CATALINA_PID is defined
+thief-MacBook-Pro:CATALINA_PID thief$ catalina.sh stop
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Using CATALINA_PID:    /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID
+$CATALINA_PID was set but the specified file does not exist. Is Tomcat running? Stop aborted.
+thief-MacBook-Pro:CATALINA_PID thief$ catalina.sh stop
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Using CATALINA_PID:    /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID
+PID file found but no matching process was found. Stop aborted.
+thief-MacBook-Pro:CATALINA_PID thief$ catalina.sh start
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Using CATALINA_PID:    /Users/thief/Documents/apache-tomcat-8.5.3/CATALINA_PID
+Existing PID file found during start.
+Removing/clearing stale PID file.
+Tomcat started.
+thief-MacBook-Pro:CATALINA_PID thief$ 

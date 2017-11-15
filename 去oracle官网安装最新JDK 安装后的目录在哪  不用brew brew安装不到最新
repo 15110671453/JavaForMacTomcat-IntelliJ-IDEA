@@ -1,0 +1,35 @@
+去oracle官网安装最新JDK 安装后的目录在哪  不用brew brew安装不到最新
+更新mac系统的jdk 1.6.0到 1.8.0  不使用brew 使用oracle官网的安装包
+
+情况：
+使用最新的eclipse需要最新的JDK1.8.0时，需要将路径指向由系统自带的JDK6路径/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/转为我们自己从ORICAL下载的最新JDK8安装路径。
+JDK8以及JDK7安装的默认路径为：/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk
+
+不使用Brew因为 避免装很多不必要的东西
+Last login: Sat Jul  9 09:16:31 on ttys000
+thief-MacBook-Pro:~ thief$ brew search java
+app-engine-java     javarepl            jslint4java         libreadline-java  
+homebrew/emacs/javaimp
+Caskroom/versions/charles-applejava
+Caskroom/versions/charles-beta-applejava
+Caskroom/versions/java-beta
+Caskroom/versions/java6
+Caskroom/versions/java7
+Caskroom/versions/java9-beta
+thief-MacBook-Pro:~ thief$ brew search jre
+No formula found for "jre".
+==> Searching pull requests...
+thief-MacBook-Pro:~ thief$ brew search jenv
+jenv
+thief-MacBook-Pro:~ thief$ brew search java8
+No formula found for "java8".
+==> Searching pull requests...
+thief-MacBook-Pro:~ thief$ 
+
+Oracle官网安装的JDK目录
+/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
+MAC系统自带的JDK目录/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+
+
+OS X自带的JRE
+/System/Library/Frameworks/JavaVM.framework/Versions/Current

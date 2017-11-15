@@ -1,0 +1,41 @@
+1.0mac下IntelLiJ IDEA开发javaweb tomcat 与 ant区别
+
+ Tomcat提供了图像用户界面控制台，用户可以方便的部署Web应用，监控Web应用的状态
+Tomcat控制台提供两种方式部署Web应用：一种是将整个目录部署成Web应用，另一种是将WAR文件部署成Web应用
+Tomcat部署Web应用方式：
+1.       利用tomcat自动部署:将一个Web应用复制到tomcat得webapps下，系统就会把该应用部署到tomcat中
+2.       利用控制台部署
+进入控制台管理界面：Context Path:/aaa(配置Web应用的URL)
+                    WAR or Directory URL：g:\aaa(Web应用所在文件夹)
+                    单击Deploy按钮将会看到tomcat的Webapps目录下多了名为aaa的文件夹，该文件夹的内容和g:\aaa的内容完全相同，表明：当我们利用控制台部署Web应用时，其实依然是利用tomcat的自动部署
+3.       增加自定义的Web部署文件
+无需将Web应用复制到tomcat安装路径下，需要在conf目录下新建Catalina目录，再再Catalina目录下新建localhost目录，最后在该目录下新建一个任意名字的XML文件---该文件就是部署Web应用的配置文件，其主文件名将作为Web应用的虚拟路径，例如：在conf\Catalina\localhost下增加一个tt.xml文件，该文件的内容如下：
+<Context doBase=”F:/publish/codes/01/aa” debug=”0” privileged=”true”>
+</Context>
+上面的doBase指定了Web应用的绝对路径，再次启动tomcat，tomcat会把
+F:/publish/codes/01/下的aa文件夹部署成Web应用，该应用的URL地址为：
+http://<server_address>:<port>/tt  
+tt就是Web部署文件的主文件名
+4.       修改server.xml文件部署Web应用
+修改该文件可能会破坏tomcat的系统文件，因此不建议采用
+ 
+配置tomcat的数据源
+从5.5开始，tomcat内置了DBCP的数据源实现
+Tomcat提供了两种配置数据源的方式:一种数据源可以让所有的Web应用访问，被称为全局数据源
+另一种只能在单个的Web应用中访问，被称为局部数据源，不管配置哪种数据源都需要提供特定数据库的JDBC驱动，把驱动复制到tomcat的lib目录下
+局部数据源只与特定的web应用相关，因此在该Web应用对应的部署文件中配置为Context元素增加一个Resource子元素 ,Resource元素就为该Web应用配置了一个局部数据源，该元素的各属性指定了数据源的各种配置信息。
+JNDI：Java Naming Directory Interface 既java命名和目录接口：就是为某个java对象起一个名字。从而让其他程序可以通过该名字来访问该java对象
+全局数据源的配置修改server.xml文件来实现与局部数据源的配置基本类似，只是修改的文件不同，局部数据源只需要修改Web应用的配置文件，而全局数据源需要修改tomcat的server.xml文件 可能导致破坏Tomcat系统，尽量避免使用全局数据源
+Ant:
+Ant是一种基于java的生成工具
+1．  类似C编程（Unix平台上使用较多）中的Make工具，C/C++项目经常使用Make工具来管理整个项目的编译，生成。
+2．  Make使用shell命令来定义生成的任务，并定义任务之间的依赖关系，以便它们总是以必须的顺序来执行
+Make工具的缺陷：本质是依赖于UNIX平台的shell语言，所以Make工具无法夸平台
+Make工具生成的文件的格式比较严格，容易导致错误
+Ant工具是基于java语言的生成工具，所以具有夸平台的能力，而且使用xml文件来编写生成文件，因而具有更好地使用性
+所以Ant是java世界的Make工具，而且这个工具是夸平台的，并具有简单易用的特性。
+由于Ant夸平台特性，所以编写Ant生成文件时可能会丢失一些灵活性，为了弥补这个不足，Ant提供一个“exec”核心task，这个task允许执行特定操作系统上的命令
+ 
+Ant运行需要如下两个环境变量：
+JAVA_HOME:该环境变量指向JDK的安装路径
+ANT_HOME:该环境变量指向Ant的安装路径

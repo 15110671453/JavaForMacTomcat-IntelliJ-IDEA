@@ -1,0 +1,42 @@
+MAC系统自带的JDK目录  JRE目录
+Oracle官网安装的JDK目录
+/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
+MAC系统自带的JDK目录/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+
+
+OS X自带的JRE
+/System/Library/Frameworks/JavaVM.framework/Versions/Current
+
+
+这里Could not create the Java Virtual Machine.
+问题竟然是因为用错了命令 应该是 -version
+thief-MacBook-Pro:bin thief$ java -v
+Unrecognized option: -v
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.
+thief-MacBook-Pro:bin thief$ echo $JAVA_HOME
+/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
+thief-MacBook-Pro:bin thief$ java -version
+java version "1.8.0"
+Java(TM) SE Runtime Environment (build 1.8.0-b132)
+Java HotSpot(TM) 64-Bit Server VM (build 25.0-b70, mixed mode)
+thief-MacBook-Pro:bin thief$ 
+
+问题 这里看到了Tomcat
+thief-MacBook-Pro:Library thief$ cd /System/
+thief-MacBook-Pro:System thief$ ls -la
+total 0
+drwxr-xr-x+  5 root   wheel   170 10 17  2014 .
+drwxr-xr-x  31 root   wheel  1122  6 12 21:47 ..
+-rw-r--r--   1 root   wheel     0  9 10  2014 .localized
+drwxr-xr-x  80 root   wheel  2720  3  3 19:51 Library
+drwxr-xr-x  13 thief  staff   442 10 15  2014 Tomcat
+thief-MacBook-Pro:System thief$ cd
+
+jdk-8u91-macosx-x64
+jre-8u91-macosx-x64
+
+java.exe用于启动window console  控制台程序
+javaw.exe用于启动 GUI程序
+javaws.exe用于web程序。
+jvm.dll就是java虚拟机规范在windows平台上的一种实现

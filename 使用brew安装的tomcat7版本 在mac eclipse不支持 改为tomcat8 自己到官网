@@ -1,0 +1,34 @@
+使用brew安装的tomcat7版本 在mac eclipse不支持 改为tomcat8 自己到官网下载安装
+
+thief-MacBook-Pro:bin thief$ catalina 
+-bash: catalina: command not found
+thief-MacBook-Pro:bin thief$ catalina.sh
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Usage: catalina.sh ( commands ... )
+commands:
+  debug             Start Catalina in a debugger
+  debug -security   Debug Catalina with a security manager
+  jpda start        Start Catalina under JPDA debugger
+  run               Start Catalina in the current window
+  run -security     Start in the current window with security manager
+  start             Start Catalina in a separate window
+  start -security   Start in a separate window with security manager
+  stop              Stop Catalina, waiting up to 5 seconds for the process to end
+  stop n            Stop Catalina, waiting up to n seconds for the process to end
+  stop -force       Stop Catalina, wait up to 5 seconds and then use kill -KILL if still running
+  stop n -force     Stop Catalina, wait up to n seconds and then use kill -KILL if still running
+  configtest        Run a basic syntax check on server.xml - check exit code for result
+  version           What version of tomcat are you running?
+Note: Waiting for the process to end and use of the -force option require that $CATALINA_PID is defined
+thief-MacBook-Pro:bin thief$ catalina.sh start
+Using CATALINA_BASE:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_HOME:   /Users/thief/Documents/apache-tomcat-8.5.3
+Using CATALINA_TMPDIR: /Users/thief/Documents/apache-tomcat-8.5.3/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /Users/thief/Documents/apache-tomcat-8.5.3/bin/bootstrap.jar:/Users/thief/Documents/apache-tomcat-8.5.3/bin/tomcat-juli.jar
+Tomcat started.
+thief-MacBook-Pro:bin thief$ 

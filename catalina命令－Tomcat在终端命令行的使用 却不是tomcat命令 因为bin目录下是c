@@ -1,0 +1,55 @@
+ catalina命令－Tomcat在终端命令行的使用 却不是tomcat命令 因为bin目录下是catalina命令
+
+ cd ../
+thief-MacBook-Pro:7.0.70 thief$ ls -la
+total 184
+drwxr-xr-x  9 thief  admin    306  7  9 10:12 .
+drwxr-xr-x  3 thief  admin    102  7  9 10:12 ..
+-rw-r--r--  1 thief  admin    366  7  9 10:12 INSTALL_RECEIPT.json
+-rw-r--r--  1 thief  admin  56846  6 16 00:41 LICENSE
+-rw-r--r--  1 thief  admin   1239  6 16 00:41 NOTICE
+-rw-r--r--  1 thief  admin   8965  6 16 00:41 RELEASE-NOTES
+-rw-r--r--  1 thief  admin  16195  6 16 00:41 RUNNING.txt
+drwxr-xr-x  3 thief  admin    102  7  9 10:12 bin
+drwxr-xr-x  9 thief  admin    306  7  9 10:12 libexec
+thief-MacBook-Pro:7.0.70 thief$ cd bin 
+thief-MacBook-Pro:bin thief$ ls -la
+total 8
+drwxr-xr-x  3 thief  admin  102  7  9 10:12 .
+drwxr-xr-x  9 thief  admin  306  7  9 10:12 ..
+lrwxr-xr-x  1 thief  admin   26  7  9 10:12 catalina -> ../libexec/bin/catalina.sh
+thief-MacBook-Pro:bin thief$ catalina
+Using CATALINA_BASE:   /usr/local/Cellar/tomcat7/7.0.70/libexec
+Using CATALINA_HOME:   /usr/local/Cellar/tomcat7/7.0.70/libexec
+Using CATALINA_TMPDIR: /usr/local/Cellar/tomcat7/7.0.70/libexec/temp
+Using JRE_HOME:        /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+Using CLASSPATH:       /usr/local/Cellar/tomcat7/7.0.70/libexec/bin/bootstrap.jar:/usr/local/Cellar/tomcat7/7.0.70/libexec/bin/tomcat-juli.jar
+Usage: catalina.sh ( commands ... )
+commands:
+  debug             Start Catalina in a debugger
+  debug -security   Debug Catalina with a security manager
+  jpda start        Start Catalina under JPDA debugger
+  run               Start Catalina in the current window
+  run -security     Start in the current window with security manager
+  start             Start Catalina in a separate window
+  start -security   Start in a separate window with security manager
+  stop              Stop Catalina, waiting up to 5 seconds for the process to end
+  stop n            Stop Catalina, waiting up to n seconds for the process to end
+  stop -force       Stop Catalina, wait up to 5 seconds and then use kill -KILL if still running
+  stop n -force     Stop Catalina, wait up to n seconds and then use kill -KILL if still running
+  configtest        Run a basic syntax check on server.xml - check exit code for result
+  version           What version of tomcat are you running?
+Note: Waiting for the process to end and use of the -force option require that $CATALINA_PID is defined
+thief-MacBook-Pro:bin thief$ 
+
+
+Catalina start启动tomcat
+Catalina stop 终止tomcat
+
+问题一：
+这个问题只是一时出现 ，过了一会后就无法访问tomcat了
+因为mac机子本身安装了nginx服务器 也占用8080端口；启动tomcat后竟然也是8080端口 ；两个服务都开着 竟然 没有出错 ；浏览器都访问正常 为什么 没有端口占用的问题
+
+问题二：
+修改tomcat 配置文件 访问端口改变
+http://localhost:8088 本机的tomcat端口号改为8088
