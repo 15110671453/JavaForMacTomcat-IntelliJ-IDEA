@@ -1,0 +1,32 @@
+为阿里云服务器 安装docker容器服务java
+
+
+[root@iZ2850357ruZ ~]# cd /etc/yum.repos.d/
+[root@iZ2850357ruZ yum.repos.d]# ls -la
+total 40
+drwxr-xr-x   3 root root  4096 Jan 13  2017 .
+drwxr-xr-x 154 root root 12288 Nov  3 17:25 ..
+drwxr-xr-x   2 root root  4096 Jan 13  2017 backup
+-r--r--r--   1 root root  1887 Jan 13  2017 CentOS-Base.repo
+-r--r--r--   1 root root  1887 Sep  6  2016 CentOS-Base.repo.backup
+-r--r--r--   1 root root   825 Jan 13  2017 epel.repo
+-rw-r--r--   1 root root  1209 Jan 29  2014 mysql-community.repo
+-rw-r--r--   1 root root  1060 Jan 29  2014 mysql-community-source.repo
+[root@iZ2850357ruZ yum.repos.d]# tee docker.repo <<-'EOF'
+> ^C
+[root@iZ2850357ruZ yum.repos.d]# vi CentOS-Base.repo
+[root@iZ2850357ruZ yum.repos.d]# tee docker.repo <<-'EOF'
+> [dockerrepo]
+> name=Docker Repository
+> baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+> enabled=1
+> gpgcheck=1
+> gpgkey=https://yum.dockerproject.org/gpg
+> EOF
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+[root@iZ2850357ruZ yum.repos.d]# 

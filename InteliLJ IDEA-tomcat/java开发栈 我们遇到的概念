@@ -1,0 +1,15 @@
+java开发栈 我们遇到的概念
+
+JDK  java开发依赖的基础包
+
+JVM 运行环境
+
+Ant
+
+Maven
+
+gradle --- groovy android
+
+---------以上三个都是 java工程的管理工具（涉及第三方开发包依赖管理 涉及编译 连接 脚本自动化 等）------
+
+NDK 与C++ 混编  --- android
