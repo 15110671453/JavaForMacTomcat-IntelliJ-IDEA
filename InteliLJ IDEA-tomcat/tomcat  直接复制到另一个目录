@@ -1,0 +1,66 @@
+tomcat  直接复制到另一个目录
+
+确保 tomcat 关闭服务
+
+macserver:bin admindyn$ ./shutdown.sh
+Using CATALINA_BASE:   /Users/admindyn/Desktop/WorkSpaceMainStudy20171017/TomcatServer
+Using CATALINA_HOME:   /Users/admindyn/Desktop/WorkSpaceMainStudy20171017/TomcatServer
+Using CATALINA_TMPDIR: /Users/admindyn/Desktop/WorkSpaceMainStudy20171017/TomcatServer/temp
+Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home
+Using CLASSPATH:       /Users/admindyn/Desktop/WorkSpaceMainStudy20171017/TomcatServer/bin/bootstrap.jar:/Users/admindyn/Desktop/WorkSpaceMainStudy20171017/TomcatServer/bin/tomcat-juli.jar
+macserver:bin admindyn$ 
+
+
+-------我们安装的tomcat 8.5 的 因为我们的mac系统的是java环境1.8.0的------
+
+mac 重新安装tomcat
+
+官网下载 源码包
+
+解压之后 注意 下载下来的 bin 命令 都没有可执行权限 所以直接使用会
+
+macserver:bin admindyn$ sudo ./startup.sh
+Password:
+sudo: ./startup.sh: command not found
+macserver:bin admindyn$ sudo ./catalina.sh
+sudo: ./catalina.sh: command not found
+
+解决方法
+macserver:apache-tomcat-7.0.82-src admindyn$ chmod 777 ./bin/*
+macserver:apache-tomcat-7.0.82-src admindyn$ cd bin/
+
+
+然后 使用命令 启动
+macserver:bin admindyn$ sudo ./startup.sh
+Using CATALINA_BASE:   /Users/admindyn/Desktop/apache-tomcat-7.0.82-src
+Using CATALINA_HOME:   /Users/admindyn/Desktop/apache-tomcat-7.0.82-src
+Using CATALINA_TMPDIR: /Users/admindyn/Desktop/apache-tomcat-7.0.82-src/temp
+Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home
+Using CLASSPATH:       /Users/admindyn/Desktop/apache-tomcat-7.0.82-src/bin/bootstrap.jar:/Users/admindyn/Desktop/apache-tomcat-7.0.82-src/bin/tomcat-juli.jar
+touch: /Users/admindyn/Desktop/apache-tomcat-7.0.82-src/logs/catalina.out: No such file or directory
+/Users/admindyn/Desktop/apache-tomcat-7.0.82-src/bin/catalina.sh: line 415: /Users/admindyn/Desktop/apache-tomcat-7.0.82-src/logs/catalina.out: No such file or directory
+
+然后 使用命令 启动 遇到问题 缺少文件  需要 在源码文件中 创建 logs目录 并且 创建文件catalina.ou
+
+重新启动 正常
+macserver:bin admindyn$ sudo ./startup.sh
+Using CATALINA_BASE:   /Users/admindyn/Desktop/apache-tomcat-7.0.82-src
+Using CATALINA_HOME:   /Users/admindyn/Desktop/apache-tomcat-7.0.82-src
+Using CATALINA_TMPDIR: /Users/admindyn/Desktop/apache-tomcat-7.0.82-src/temp
+Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home
+Using CLASSPATH:       /Users/admindyn/Desktop/apache-tomcat-7.0.82-src/bin/bootstrap.jar:/Users/admindyn/Desktop/apache-tomcat-7.0.82-src/bin/tomcat-juli.jar
+Tomcat started.
+macserver:bin admindyn$ 
+
+在INTELlilj idea 配置 maven  
+
+在INTELlilj idea 配置tomcat 服务
+
+
+我们使用maven的方式构建工程
+
+管理工程 结构 编译 发布
+
+
+
+
