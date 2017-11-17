@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+    <!-- … -->
+    <servlet>
+        <servlet-name>indexservlet</servlet-name>
+        <servlet-class>IndexServlet.IndexApplication</servlet-class>
+        <init-param>
+            <param-name>messge</param-name>
+            <param-value>welcome index servlet</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>indexservlet</servlet-name>
+        <url-pattern>/zheli/indexservlet.php</url-pattern>
+    </servlet-mapping>
+
+    <!-- … -->
+
+    <!-- … -->
+    <servlet>
+        <servlet-name>BasicServlet</servlet-name>
+        <servlet-class>IndexServlet.ServletBasic1</servlet-class>
+        <init-param>
+            <param-name>messge</param-name>
+            <param-value>ServletBasic1</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BasicServlet</servlet-name>
+        <url-pattern>/Basic/basic1.php</url-pattern>
+    </servlet-mapping>
+
+    <!-- … -->
+
+
+    <!-- … -->
+    <servlet>
+        <servlet-name>Hello</servlet-name>
+        <servlet-class>IndexServlet.HelloForm</servlet-class>
+        <init-param>
+            <param-name>messge</param-name>
+            <param-value>helloform</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Hello</servlet-name>
+        <url-pattern>/Basic/hello.jsp</url-pattern>
+    </servlet-mapping>
+
+    <!-- … -->
+
+
+    <!-- … -->
+    <servlet>
+        <servlet-name>life</servlet-name>
+        <servlet-class>IndexServlet.LifeCycleServlet</servlet-class>
+        <init-param>
+            <param-name>messge</param-name>
+            <param-value>helloform</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>life</servlet-name>
+        <url-pattern>/Basic/life.jsp</url-pattern>
+    </servlet-mapping>
+
+    <!-- … -->
+
+    <!-- … -->
+    <servlet>
+        <servlet-name>forward</servlet-name>
+        <servlet-class>IndexServlet.ForwardServlet</servlet-class>
+        <init-param>
+            <param-name>messge</param-name>
+            <param-value>helloform</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>forward</servlet-name>
+        <url-pattern>/Basic/forward.jsp</url-pattern>
+    </servlet-mapping>
+
+    <!-- … -->
+
+</web-app>
