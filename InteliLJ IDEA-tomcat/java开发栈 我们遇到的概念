@@ -4,11 +4,13 @@ JDK  java开发依赖的基础包
 
 JVM 运行环境
 
-Ant
+三种常用 编译器
 
-Maven
+Ant 基本该遗弃了
 
-gradle --- groovy android
+Maven 流行 
+
+gradle --- groovy android 主用用于android开发
 
 ---------以上三个都是 java工程的管理工具（涉及第三方开发包依赖管理 涉及编译 连接 脚本自动化 等）------
 
