@@ -1,0 +1,53 @@
+思考在JavaWeb开发中几个问题
+
+第一 session的管理机制
+	默认 tomcat的简单做法 使用 线程安全的hashmap 
+	存储到内存
+
+	对tomcat的进行配置可以 存储到数据库 和 文件中 实现持久化
+	由第三方组件可以使用
+
+
+	注意  当对 tomcat的默认session 进行 删除 键值 或者 更新 键值
+
+	时 我们发现 jsessionid 改变 我们需要注意
+
+第二 在jsp中使用javabean  我们对每个javabean引用使用id
+
+	对每个javabean的生命周期使用 scope 来管理
+
+	当两个或多个jsp页面 中javabean 使用相同的id 或者 scope 生命周期
+
+	都指定的范围大于request 比如 session  application 时
+
+	发现 相同id 相同范围的javabean 在 多个jsp中实现共享操作
+
+	可以共享数据  
+
+	在使用时 是把双刃剑
+
+第三 由于servlet 服务器第一次启动 或者 请求第一次建立时 servlet 被创建 
+	
+	之后一直等待响应 每次请求 都在处理同一个servlet 不同线程的代码
+
+	init 方法继承 只在servlet第一次初始化时仅执行一次
+
+	在实现继承 后续开发中 有哪些默认继承的方法 是线程不安全的
+
+	service 方法的继承 是否线程安全
+
+	doget
+
+	dopost
+
+	如何保证线程安全
+
+
+第四 线程安全 还有那些方式
+
+
+第五 如何保证每次请求 代码中某些变量 操作的不是同一块内存数据 即内存得到释放呢
+
+	也就是说 类似javabean 生命周期设置session  等操作
+
+	避免有一些隐式的这些默认机制 我们没有注意到
