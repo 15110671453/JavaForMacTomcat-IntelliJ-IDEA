@@ -1,0 +1,50 @@
+[root@iZ2850357ruZ tomcat]# docker run  -i -t tomcat /bin/bash
+root@d9c199fdd954:/usr/local/tomcat# ls -la
+total 128
+drwxr-sr-x 11 root staff  4096 Nov 17 15:16 .
+drwxrwsr-x 11 root staff  4096 Nov 17 15:16 ..
+-rw-r-----  6 root root  57092 Sep 28 10:31 LICENSE
+-rw-r-----  6 root root   1723 Sep 28 10:31 NOTICE
+-rw-r-----  6 root root   7064 Sep 28 10:31 RELEASE-NOTES
+-rw-r-----  6 root root  15946 Sep 28 10:31 RUNNING.txt
+drwxr-x---  2 root root   4096 Nov 17 15:16 bin
+drwx--S---  2 root root   4096 Nov 17 15:16 conf
+drwxr-sr-x  3 root staff  4096 Nov 17 15:16 include
+drwxr-x---  2 root root   4096 Nov 17 15:16 lib
+drwxr-x---  2 root root   4096 Sep 28 10:30 logs
+drwxr-sr-x  3 root staff  4096 Nov 17 15:16 native-jni-lib
+drwxr-x---  2 root root   4096 Nov 17 15:16 temp
+drwxr-x---  7 root root   4096 Nov 17 15:16 webapps
+drwxr-x---  2 root root   4096 Sep 28 10:30 work
+root@d9c199fdd954:/usr/local/tomcat# cd webapps/
+root@d9c199fdd954:/usr/local/tomcat/webapps# ls -la
+root@d9c199fdd954:/usr/local/tomcat/bin# catalina.sh version
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /docker-java-home/jre
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Server version: Apache Tomcat/8.5.23
+Server built:   Sep 28 2017 10:30:11 UTC
+Server number:  8.5.23.0
+OS Name:        Linux
+OS Version:     3.10.0-327.el7.x86_64
+Architecture:   amd64
+JVM Version:    1.8.0_151-8u151-b12-1~deb9u1-b12
+JVM Vendor:     Oracle Corporation
+root@d9c199fdd954:/usr/local/tomcat/bin# exit
+exit
+[root@iZ2850357ruZ tomcat]# which java
+/usr/bin/java
+[root@iZ2850357ruZ tomcat]# java -V
+Unrecognized option: -V
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.
+[root@iZ2850357ruZ tomcat]# java -v
+Unrecognized option: -v
+Error: Could not create the Java Virtual Machine.
+Error: A fatal exception has occurred. Program will exit.
+[root@iZ2850357ruZ tomcat]# java -version
+openjdk version "1.8.0_111"
+OpenJDK Runtime Environment (build 1.8.0_111-b15)
+OpenJDK 64-Bit Server VM (buil
