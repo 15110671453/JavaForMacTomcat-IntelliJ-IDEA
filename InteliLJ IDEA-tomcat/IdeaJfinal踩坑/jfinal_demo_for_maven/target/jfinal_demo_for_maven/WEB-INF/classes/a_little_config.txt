@@ -1,0 +1,5 @@
+jdbcUrl = jdbc:mysql://localhost/JfinalDB?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+user = root
+password = asd1453NMDmysql
+devMode = true
+useSSL=false

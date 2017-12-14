@@ -1,0 +1,52 @@
+Jfinal 使用记录 - 在Idea下
+
+在编译工程时 会执行该类DemonConfig 类 生成一些 web配置 因为在Jfinal工程中少了web.xml 这些文件的配置 改为了代码配置
+第一 默认启动的文件在 DemonConfig 类文件中
+
+
+第二 在DemonConfig 类 找到 main 方法 入口  这里修改我们在配置tomcatserver 
+中 经常配置的 应用目录 
+
+//这里 需要针对自己的项目修改 第一端口号 第二 对应的服务器 应用目录参数context /jfinalserver idea创建的工程取消最后的参数 热加载参数
+		//JFinal.start("src/main/webapp", 8080, "/jfinalserver", 5);
+		JFinal.start("src/main/webapp", 8080, "/jfinalserver");
+
+第三 默认Jfinal提供的demo 添加有数据库插件 
+
+但是为了和我们的工程对接 
+
+需要注意 数据库插件在编译时就启动连接数据库了  我们需要知道数据库
+启动的数据库配置文件 
+
+在configConstant 方法中我们可以配置 一个全局工具PropKit
+获取属性文件 Jfinal默认是在该属性文件配置数据库连接的基本参数
+数据库名 数据库用户名 密码 等参数的 
+
+/**
+	 * 配置常量
+	 */
+	public void configConstant(Constants me) {
+
+		//这里为PropKit配置指明 可以全局获取的属性文件
+		// 加载少量必要配置，随后可用PropKit.get(...)获取值
+		PropKit.use("a_little_config.txt");
+		me.setDevMode(PropKit.getBoolean("devMode", false));
+	}
+
+
+
+第四 启动demo  我们的自己的项目应用目录在jfinalserver 修改 index目录下的 index.html 点击此处的路径为
+	本Demo采用 JFinal Template 作为视图文件。
+	点击<a href="/jfinalserver/blog"><b>此处</b></a>开始试用Demo。
+
+
+
+第五 修改Blogcontroller 对应的视图文件存在的相对目录
+
+me.add("/", IndexController.class, "/index");	// 第三个参数为该Controller的视图存放路径
+		me.add("/blog", BlogController.class,"/blog");	
+
+
+第六
+	
+	MySql 数据库表必须设置为 InnoDB 引擎时才支持事务，MyISAM 并不支持事务。	
