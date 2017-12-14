@@ -1,0 +1,14 @@
+这里备注信息 使用Jfinal 配置Idea一键发布
+
+我们选择的是 maven 方式管理的工程
+
+ 我们 回顾以前 我们选择开发  构建工程 使用 maven构建  选择的是 javaee
+
+研究Jfinal demo 工程 没有使用javaee 使用maven 构建  添加依赖添加的是jfinal
+
+方式是简单的web 不用非要选择javaee
+
+
+选择javaee 无非就是 工程默认创建时多添加一些javaee的jar依赖包
+
+选择web  工程默认创建时就纯净许多 没有默认加一些依赖包  需要在pom 即maven的配置文件添加自己需要的依赖 并不断自己根据开发需求来丰富需要的jar包 
